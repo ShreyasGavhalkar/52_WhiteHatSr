@@ -21,15 +21,34 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: candidate; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.candidate (
+    candidate_id integer NOT NULL,
+    sex character(1),
+    name text,
+    age integer,
+    constituency_id integer,
+    constituency_name character varying(255),
+    party character varying(255),
+    election_id integer
+);
+
+
+ALTER TABLE public.candidate OWNER TO postgres;
+
+--
 -- Name: election; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.election (
-    constituency_id integer NOT NULL,
+    election_id integer NOT NULL,
+    type character varying(255),
+    details text,
     start_date date,
     end_date date,
-    details text,
-    type character varying(255),
+    constituency_id integer,
     admin_id integer
 );
 
@@ -53,23 +72,35 @@ ALTER TABLE public.election_admin OWNER TO postgres;
 --
 
 CREATE TABLE public.voter (
-    constituency_id integer,
-    name text,
     voter_id character(10) NOT NULL,
+    name text,
     date_of_birth date,
     sex character(1),
     address text,
-    constituency_name text
+    contituency_id integer,
+    constituency_name character varying(255)
 );
 
 
 ALTER TABLE public.voter OWNER TO postgres;
 
 --
+-- Data for Name: candidate; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.candidate (candidate_id, sex, name, age, constituency_id, constituency_name, party, election_id) FROM stdin;
+1	M	Alok Joshi	20	211	Khadakwasla	CCP	1
+2	M	Neel Patwardhan	20	211	Khadakwasla	RSS	1
+\.
+
+
+--
 -- Data for Name: election; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.election (constituency_id, start_date, end_date, details, type, admin_id) FROM stdin;
+COPY public.election (election_id, type, details, start_date, end_date, constituency_id, admin_id) FROM stdin;
+1	Loksabha	Loksabha Elections 2022 for constituency 211	2022-10-01	2022-10-07	211	1
+2	Vidhan Sabha	Vidhan Sabha Elections 2022 for constituency 211	2022-11-01	2022-11-07	211	2
 \.
 
 
@@ -78,6 +109,8 @@ COPY public.election (constituency_id, start_date, end_date, details, type, admi
 --
 
 COPY public.election_admin (admin_id, name) FROM stdin;
+1	Shreyas Gavhalkar
+2	Om Gogte
 \.
 
 
@@ -85,8 +118,18 @@ COPY public.election_admin (admin_id, name) FROM stdin;
 -- Data for Name: voter; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.voter (constituency_id, name, voter_id, date_of_birth, sex, address, constituency_name) FROM stdin;
+COPY public.voter (voter_id, name, date_of_birth, sex, address, contituency_id, constituency_name) FROM stdin;
+123ABC1234	Test Voter 1	2000-01-01	M	Assume address	211	Khadakwasla
+123ABC1235	Test Voter 2	2000-01-01	M	Assume address	211	Khadakwasla
 \.
+
+
+--
+-- Name: candidate candidate_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.candidate
+    ADD CONSTRAINT candidate_pkey PRIMARY KEY (candidate_id);
 
 
 --
@@ -102,7 +145,7 @@ ALTER TABLE ONLY public.election_admin
 --
 
 ALTER TABLE ONLY public.election
-    ADD CONSTRAINT election_pkey PRIMARY KEY (constituency_id);
+    ADD CONSTRAINT election_pkey PRIMARY KEY (election_id);
 
 
 --
