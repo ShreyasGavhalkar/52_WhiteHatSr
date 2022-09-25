@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
 
-def sub_election(request):
+def election(request):
     """GET: Returns list of subelections for a particular user and a particular type [Lok Sabha, Rajya Sabha, and so on
        POST: Creates a new sub election for a particular user. Sub election requires:
                 1) Constituency name
