@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
 
+
 def election(request):
     """GET: Returns list of subelections for a particular user and a particular type [Lok Sabha, Rajya Sabha, and so on
        POST: Creates a new sub election for a particular user. Sub election requires:
@@ -35,9 +36,10 @@ def admin_auth(request):
 
             if user is not None:
                 login(request,user)
+                return JsonResponse({'admin_auth_status':True})
 
             else:
-                #return jsonResponse of failure or invalid login
+                return JsonResponse({'admin_auth_status':False})
                 pass
 
 
