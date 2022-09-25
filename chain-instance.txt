@@ -1,0 +1,4 @@
+Intially we will have one main wallet that consists of all the coins that will be used by the users to cast thier votes.
+Once the election starts, we have to ensure that the candidates have 0 balance. The users can then cast their votes.
+After voting, the winner will be the candidate with the most coins in thier wallet. After that all the coins from the
+candidates (and the users who havent voted) will be again put back to the main wallet.
