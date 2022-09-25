@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import styles from "./App.module.css"
+import React from 'react';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <div className={styles.sectionTitle}>Admin Dashboard</div>
+      <p>My Elections</p>
+      <p>Name</p>
+      <p>Status</p>
+      <div>
+        <button>Election 1 </button>
+        <p>Over</p>
+      </div>
+      <div>
+        <button>Election 2 </button>
+        <p>Ongoing</p>
+      </div>
+      <div>
+        <button>Election 3 </button>
+        <p>Upcoming</p>
+      </div>
     </div>
   );
 }
