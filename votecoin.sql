@@ -85,6 +85,18 @@ CREATE TABLE public.voter (
 ALTER TABLE public.voter OWNER TO postgres;
 
 --
+-- Name: wallet_details; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.wallet_details (
+    voter_id integer NOT NULL,
+    wallet_address text
+);
+
+
+ALTER TABLE public.wallet_details OWNER TO postgres;
+
+--
 -- Data for Name: candidate; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -125,6 +137,14 @@ COPY public.voter (voter_id, name, date_of_birth, sex, address, contituency_id, 
 
 
 --
+-- Data for Name: wallet_details; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.wallet_details (voter_id, wallet_address) FROM stdin;
+\.
+
+
+--
 -- Name: candidate candidate_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -154,6 +174,14 @@ ALTER TABLE ONLY public.election
 
 ALTER TABLE ONLY public.voter
     ADD CONSTRAINT voter_pkey PRIMARY KEY (voter_id);
+
+
+--
+-- Name: wallet_details wallet_details_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.wallet_details
+    ADD CONSTRAINT wallet_details_pkey PRIMARY KEY (voter_id);
 
 
 --
