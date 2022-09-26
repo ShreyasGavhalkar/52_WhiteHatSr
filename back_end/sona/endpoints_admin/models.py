@@ -13,7 +13,7 @@ class election(models.Model):
     type = models.CharField(max_length=2, choices = TYPE_OF_ELECTION, null=False)
     start_date = models.DateField(null=False)
     end_date = models.DateField(null=False)
-    constituency_id = models.ForeignKey(constituency, on_delete=models.PROTECT)
+    constituency_id = models.IntegerField(null=False)
     admin_id = models.IntegerField(null=False)
 
 class candidates(models.Model):
@@ -21,6 +21,6 @@ class candidates(models.Model):
     sex = models.CharField(max_length=1, null=False)
     name = models.TextField(null=False)
     age = models.IntegerField(null=False)
-    constituency_id = models.ForeignKey(constituency, on_delete=models.PROTECT)
+    constituency_id = models.IntegerField(null=False)
     party = models.TextField(null=False)
     election_id = models.ForeignKey(election, on_delete=models.PROTECT)
