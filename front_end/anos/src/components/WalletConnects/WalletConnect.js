@@ -1,17 +1,11 @@
 import { ethers } from "ethers";
 import ERC20ABI from "../../ERC20ABI.json";
+import web3 from "web3";
 import React, {useState} from "react";
 import { useMoralis, useWeb3Transfer } from "react-moralis";
 
 function WalletConnect() {
   const { authenticate, isAuthenticated, isAuthenticating, user, account, logout, Moralis } = useMoralis();
-
-  const { fetch, error, isFetching } = useWeb3Transfer({
-    amount: Moralis.Units.Token(1, 18),
-    receiver: "0xAc51f59CeBCA4798735e15f6623Ae57f68Abf557",
-    type: "erc20",
-    contractAddress: "0x5B3d976ACE976A23a458fDee67164684AB0861AD",
-  });
 
   const [voters, setVoters] = useState([
     {
@@ -123,8 +117,6 @@ function WalletConnect() {
     console.log("logged out");
   }
 
-  
-
   return (
     <div className="App">
       {console.log(voters)}
@@ -134,7 +126,6 @@ function WalletConnect() {
       <button id="0x1095e99423d07e2E4f4A1de3b2331bAa40B20Cd4" onClick={send}>Vote for Rahul Gandhi</button>
       <button id="0x8325c3d900571ec9dF176d6bFBa1E04f0a1FE352" onClick={send}>Vote for Amit Shah</button>
       <button id="0x8325c3d900571ec9dF176d6bFBa1E04f0a1FE352" onClick={send}>Vote for Donald Trump</button>
-      <button onClick={() => fetch()} disabled={isFetching}>Transfer</button>
       <button onClick={login}>Moralis Metamask Login</button>
       <button onClick={logOut} disabled={isAuthenticating}>Logout</button>
     </div>
