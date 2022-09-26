@@ -17,8 +17,12 @@ def elections(request):
             admin_id = request.user.id
             election_type = request.GET.get("type")
             election_entries = election.objects.filter(admin_id = admin_id,type = election_type)
+            election_entries_list = [ i.__dict__ for i in election_entries]
+            for i in election_entries_list:
+                del i['_state']
 
-            pass
+            return JsonResponse(election_entries_list, safe = False)
+
         elif(request.method == "POST"):
             #TODO: Add a try and except here to indicate success and failure
             admin_id = request.user.id
