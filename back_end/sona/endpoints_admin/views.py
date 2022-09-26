@@ -14,9 +14,13 @@ def elections(request):
         
         if(request.method == "GET"):
             #query database for elections of a particular user and particular type and return jsonresponse
+            admin_id = request.user.id
+            election_type = request.GET.get("type")
+            election_entries = election.objects.filter(admin_id = admin_id,type = election_type)
+
             pass
         elif(request.method == "POST"):
-            #1) Read input data and send json response of success and failure 
+            #TODO: Add a try and except here to indicate success and failure
             admin_id = request.user.id
             constituency_id = request.POST["constituency_id"]
             start_date = request.POST["start_date"]
@@ -26,6 +30,7 @@ def elections(request):
             
             election_entry = election(election_id = election_id,type = type,start_date = start_date,end_date = end_date,constituency_id = constituency_id,admin_id = admin_id)
             election_entry.save()
+            return JsonResponse({'request_status':True})
 
     else:
         return JsonResponse({'admin_auth_status':False})
