@@ -22,7 +22,7 @@ def insert_voter_data(request):
         return JsonResponse({"admin_auth_status":True})
 
 def get_constituency(request):
-    if(request.method == 'GET'):
+    if(request.method == 'POST'):
         json_data = json.loads(request.body)
         voter_id = json_data['voter_id']
         voter_model = voter.objects.get(pk=voter_id)
