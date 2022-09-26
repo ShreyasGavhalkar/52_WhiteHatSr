@@ -50,12 +50,19 @@ def candidate(request):
     '''
     # if request.user.is_authenticated:
     if request.method == 'GET':
-        breakpoint()
+        # breakpoint()
         # election_id = request.GET.get('election_id')
         election_id = 1
         election_obj = election.objects.get(pk=election_id)
-        candidate_obj = candidates.objects.get(election_id=election_obj)
-
+        candidate_objs = candidates.objects.filter(election_id=election_obj.election_id)
+        list_of_candidates = [ i.__dict__ for i in candidate_objs]
+        for i in list_of_candidates:
+            del i['_state']
+        return JsonResponse(list_of_candidates, safe = False)
+    else:
+        new_candidate = candidate(request.POST)
+        new_candidate.save()
+        
 
 
 
