@@ -7,5 +7,5 @@ class voter(models.Model):
     date_of_birth = models.DateField(null=False)
     sex = models.CharField(max_length=1, null=False)
     address = models.TextField(null=False)
-    constituency = models.ForeignKey(constituency)
+    constituency = models.ForeignKey(constituency, on_delete=models.PROTECT)
 # Create your models here.
