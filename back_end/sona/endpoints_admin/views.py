@@ -17,10 +17,18 @@ def elections(request):
             pass
         elif(request.method == "POST"):
             #1) Read input data and send json response of success and failure 
-            pass
+            admin_id = request.user.id
+            constituency_id = request.POST["constituency_id"]
+            start_date = request.POST["start_date"]
+            end_date = request.POST["end_date"]
+            type = request.POST["type"]
+            election_id = request.POST["election_id"]
+            
+            election_entry = election(election_id = election_id,type = type,start_date = start_date,end_date = end_date,constituency_id = constituency_id,admin_id = admin_id)
+            election_entry.save()
+
     else:
-        #return json of invalid token
-        pass
+        return JsonResponse({'admin_auth_status':False})
 
 def admin_auth(request): 
     """POST: returns token by authenticating) (Login)
