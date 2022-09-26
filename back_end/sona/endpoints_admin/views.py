@@ -83,14 +83,3 @@ def candidate(request):
         new_candidate = candidate(request.POST)
         new_candidate.save()
         
-
-
-
-
-
-
-
-
-
-
-    
