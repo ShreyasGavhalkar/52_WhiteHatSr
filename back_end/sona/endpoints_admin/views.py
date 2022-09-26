@@ -11,9 +11,8 @@ def elections(request):
        POST: Creates a new sub election for a particular user. Sub election requires:
                 1) Constituency name
                 2) candidates for a the Constituency: refer to database for the candidate inputs
-                """
+            """
     if(request.user.is_authenticated):
-        
         if(request.method == "GET"):
             #query database for elections of a particular user and particular type and return jsonresponse
             admin_id = request.user.id
@@ -46,7 +45,6 @@ def admin_auth(request):
     """POST: returns token by authenticating) (Login)
 
     """
-    # breakpoint()
     if(not request.user.is_authenticated):
         
         if(request.method == "POST"):
@@ -57,12 +55,13 @@ def admin_auth(request):
             user = authenticate(request,username = json_data['username'], password = json_data['password'])
 
             if user is not None:
+                #breakpoint()
                 login(request,user)
-                return JsonResponse({'admin_auth_status':True})
-
+                resp =  JsonResponse({'admin_auth_status':True})
+                return resp
             else:
-                return JsonResponse({'admin_auth_status':False})
-                pass
+                resp =  JsonResponse({'admin_auth_status':False})
+                return resp
 
 
 def candidate(request):
