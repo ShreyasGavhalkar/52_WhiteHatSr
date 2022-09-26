@@ -1,7 +1,9 @@
+import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
 from endpoints_admin.models import candidates, election
+from django.views.decorators.csrf import csrf_exempt
 
 
 def elections(request):
@@ -9,9 +11,8 @@ def elections(request):
        POST: Creates a new sub election for a particular user. Sub election requires:
                 1) Constituency name
                 2) candidates for a the Constituency: refer to database for the candidate inputs
-                """
+            """
     if(request.user.is_authenticated):
-        
         if(request.method == "GET"):
             #query database for elections of a particular user and particular type and return jsonresponse
             admin_id = request.user.id
@@ -39,26 +40,28 @@ def elections(request):
     else:
         return JsonResponse({'admin_auth_status':False})
 
+@csrf_exempt
 def admin_auth(request): 
     """POST: returns token by authenticating) (Login)
 
     """
-    
-    if(request.user.is_authenticated):
+    if(not request.user.is_authenticated):
         
         if(request.method == "POST"):
-            username = request.POST['username']
-            password = request.POST['password']
+            # username = request.body['username']
+            # password = request.body['password']
+            json_data = json.loads(request.body)
             
-            user = authenticate(request,username = username, password = password)
+            user = authenticate(request,username = json_data['username'], password = json_data['password'])
 
             if user is not None:
+                #breakpoint()
                 login(request,user)
-                return JsonResponse({'admin_auth_status':True})
-
+                resp =  JsonResponse({'admin_auth_status':True})
+                return resp
             else:
-                return JsonResponse({'admin_auth_status':False})
-                pass
+                resp =  JsonResponse({'admin_auth_status':False})
+                return resp
 
 
 def candidate(request):
