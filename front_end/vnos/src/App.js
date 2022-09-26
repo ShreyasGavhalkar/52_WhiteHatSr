@@ -86,7 +86,7 @@ const firebaseConfig = {
       .then((confirmationResult) => {
         console.log(confirmationResult);
         console.log("success");
-        window.open("/", "_self");
+        window.open("/dashboard", "_self");
       })
       .catch((error) => {
         // User couldn't sign in (bad verification code?)
@@ -111,10 +111,10 @@ const firebaseConfig = {
     <Router>
       <div id="recaptcha-container"></div>
       <Switch>
-        <Route path="/" exact>
+        <Route path="/dashboard" exact>
           <Home signOut={signOut} user={user} />
         </Route>
-        <Route path="/signin" exact>
+        <Route path="/" exact>
           <SignIn
             loginSubmit={loginSubmit}
             otpSubmit={otpSubmit}
