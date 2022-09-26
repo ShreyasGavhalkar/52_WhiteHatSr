@@ -1,7 +1,9 @@
+import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
 from endpoints_admin.models import candidates, election
+from django.views.decorators.csrf import csrf_exempt
 
 
 def elections(request):
@@ -39,18 +41,20 @@ def elections(request):
     else:
         return JsonResponse({'admin_auth_status':False})
 
+@csrf_exempt
 def admin_auth(request): 
     """POST: returns token by authenticating) (Login)
 
     """
-    
-    if(request.user.is_authenticated):
+    # breakpoint()
+    if(not request.user.is_authenticated):
         
         if(request.method == "POST"):
-            username = request.POST['username']
-            password = request.POST['password']
+            # username = request.body['username']
+            # password = request.body['password']
+            json_data = json.loads(request.body)
             
-            user = authenticate(request,username = username, password = password)
+            user = authenticate(request,username = json_data['username'], password = json_data['password'])
 
             if user is not None:
                 login(request,user)

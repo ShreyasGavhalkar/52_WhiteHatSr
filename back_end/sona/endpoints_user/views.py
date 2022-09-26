@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from models import voter
+from .models import voter
 
 def insert_voter_data(request):
-
+    breakpoint()
     if(request.user.is_authenticated):
 
         if(request.method == "POST"):

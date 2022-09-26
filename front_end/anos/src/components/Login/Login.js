@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import './Login.css';
 
 async function loginUser(credentials) {
- return fetch('http://localhost:3000/login', {
+ return fetch('http://127.0.0.1:8000/admin/auth/', {
    method: 'POST',
+   mode: 'cors',
    headers: {
      'Content-Type': 'application/json'
    },
    body: JSON.stringify(credentials)
- })
+ }
+  )
    .then(data => data.json())
 }
 
@@ -19,6 +21,7 @@ export default function Login({ setToken }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
     const token = await loginUser({
       username,
       password
@@ -42,6 +45,7 @@ export default function Login({ setToken }) {
           <button type="submit">Submit</button>
         </div>
       </form>
+      <script>console.log(username,password)</script>
     </div>
   )
 }
