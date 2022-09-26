@@ -2,3 +2,45 @@
 .wrapper {
   padding: 20px;
 }
+
+.polt{
+  outline: 0;
+  width: 100px;
+  text-align: center;
+  margin: 20px;
+  color: white;
+  background-color: orange;
+  border-radius: 20px;
+  position: absolute;
+  top:75%;
+  left: 40%;
+  transform: translate(-50%,-50%);
+}
+
+.polt:hover{
+  background-color: rgb(158, 109, 18);
+  cursor: pointer;
+}
+
+.crd-plt{
+  display: inline-block;
+  vertical-align: top;
+  width: 200px;
+  height: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: rgb(61, 43, 78);
+  border-radius: 20px;
+  position: relative;
+}
+
+
+
+.crd-plt img{
+  width: 100px;
+  position: absolute;
+  top:40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 20px;
+}
