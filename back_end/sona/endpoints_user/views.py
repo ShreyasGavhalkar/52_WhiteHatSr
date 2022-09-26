@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import voter
+import json
 
 def insert_voter_data(request):
-    breakpoint()
     if(request.user.is_authenticated):
 
         if(request.method == "POST"):
@@ -20,5 +20,13 @@ def insert_voter_data(request):
 
     else:
         return JsonResponse({"admin_auth_status":True})
+
+def get_constituency(request):
+    if(request.method == 'POST'):
+        json_data = json.loads(request.body)
+        voter_id = json_data['voter_id']
+        voter_model = voter.objects.get(pk=voter_id)
+        return JsonResponse({'constituency':voter_model.constituency_id})
+
 
 
