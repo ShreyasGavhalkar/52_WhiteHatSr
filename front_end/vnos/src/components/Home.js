@@ -108,7 +108,7 @@ const Home = (props) => {
         </button>
       </Link></div>
       <div className={styles.crdPlt}>
-        <img src={image3} alt="Manmohan Singh" />
+        <img src={image3} alt="Smriti Irani" />
         <Link to="/results">
         <button
           className={styles.polt}

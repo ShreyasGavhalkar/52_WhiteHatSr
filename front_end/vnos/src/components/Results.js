@@ -2,31 +2,31 @@ import ABI from "../ERC20ABI.json";
 import { useState } from "react";
 import { ethers } from "ethers";
 import { VictoryPie } from "victory";
+import styles from "./Results.module.css";
 const Results = () => {
   const [votes, setVotes] = useState([
     {
-      x: "Narendra Modi",
-      y: "26",
+      x: "Amit Shah",
+      y: "3",
     },
     {
       x: "Rahul Gandhi",
-      y: "12",
+      y: "15",
     },
     {
-      x: "Manmohan Singh",
-      y: "11",
+      x: "Smriti Irani",
+      y: "16",
     },
     {
-      x: "Amit Shah",
-      y: "18",
+      x: "Modi",
+      y: "22",
     },
-    
   ]);
   const addresses = [
-    "0xE471380c0986a6D08Af785Dadf1EbD1153039014",
+    "0xD0E188F13783c700433Bda81820FaBf8137b681E",
     "0x8325c3d900571ec9dF176d6bFBa1E04f0a1FE352",
     "0x1095e99423d07e2E4f4A1de3b2331bAa40B20Cd4",
-    "0xD0E188F13783c700433Bda81820FaBf8137b681E",
+    "0xE471380c0986a6D08Af785Dadf1EbD1153039014",
   ];
 
   const getBal = async (addr) => {
@@ -55,10 +55,9 @@ const Results = () => {
     <div onClick={doAll}>
       {console.log(votes)}
       Hello
-      <VictoryPie
-        data={votes}
-        
-      />
+      <div className={styles.pieChart}>
+        <VictoryPie data={votes} />
+      </div>
     </div>
   );
 };
