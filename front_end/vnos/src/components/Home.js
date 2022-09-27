@@ -7,6 +7,10 @@ import image3 from "../Assets/image 3.jpg";
 import image4 from "../Assets/image 4.jpg";
 import styles from "./Home.module.css";
 import Results from "./Results";
+const [show, setShow] = useState(false);
+const hideButton = () => {
+  setShow(true);
+};
 const Home = (props) => {
   const {
     authenticate,
@@ -102,8 +106,10 @@ const Home = (props) => {
         <button
           className={styles.polt}
           id="0x8325c3d900571ec9dF176d6bFBa1E04f0a1FE352"
-          onClick={send}
-        >
+          onClick={() => {
+            handleClick();
+            send();
+          }}        >
           Vote
         </button>
       </Link></div>
@@ -113,7 +119,10 @@ const Home = (props) => {
         <button
           className={styles.polt}
           id="0x1095e99423d07e2E4f4A1de3b2331bAa40B20Cd4"
-          onClick={send}
+          onClick={() => {
+            handleClick();
+            send();
+          }}
         >
           Vote
         </button></Link>
@@ -124,11 +133,15 @@ const Home = (props) => {
         <button
           className={styles.polt}
           id="0xD0E188F13783c700433Bda81820FaBf8137b681E"
-          onClick={send}
+          onClick={() => {
+            handleClick();
+            send();
+          }}
         >
           Vote
         </button></Link>
       </div>
+      <button>Results</button>
     </div>
   );
 };
