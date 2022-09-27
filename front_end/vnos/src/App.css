@@ -1,17 +1,26 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@font-face {
+  font-family: Satoshi;
+  src: url(./Assets/Satoshi-Medium.otf);
+}
+:root {
+  font-family: Satoshi;
+  font-size: 2rem;
+  background-color: #ffffff;
+  /* color: #d6fe51; */
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Satoshi";
   background: #eee;
 }
 
-.prompt{
+.prompt {
   text-align: center;
-  font-size: 1.2rem
+  font-size: 1.2rem;
 }
 
 .wrapper {
@@ -33,7 +42,7 @@ body {
 .message {
   margin: 0.5rem 0rem;
   background: #212121;
-  color: #eaeaea;
+  color: black;
   padding: 1rem 1rem;
   margin-top: 1.5rem;
   font-weight: 400;
@@ -56,6 +65,7 @@ body {
   width: 100%;
   text-align: center;
   padding: 1rem;
+  color: #000000;
 }
 
 .input-field {
@@ -77,7 +87,7 @@ body {
   background: #ffff;
   border: 2px solid #ccc;
   margin-top: 0.5rem;
-  color: #000;
+  color: black;
   font-family: inherit;
 }
 input:focus {
@@ -88,7 +98,7 @@ input:focus {
 .main-button {
   background: linear-gradient(to right, #2193b0, #6dd5ed);
   color: #fff;
-  width: 100%;
+  width: 37%;
   padding: 0.75rem;
   font-weight: 600;
   font-family: inherit;

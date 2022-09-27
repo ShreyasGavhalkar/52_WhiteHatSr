@@ -1,5 +1,4 @@
 import { ethers } from "ethers";
-import ERC20ABI from "../../ERC20ABI.json";
 import React, {useState} from "react";
 import { useMoralis } from "react-moralis";
 import image1 from "../../Assets/image 1.jpg";
