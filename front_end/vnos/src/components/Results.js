@@ -47,7 +47,7 @@ const Results = () => {
 
   return (
     <div >
-      <buton style={{textAlign:"center"}} onClick={doAll}>Show Live Comparison</buton>
+      <button style={{textAlign:"center"}} onClick={doAll}>Show Live Comparison</button>
       {showRes && <div className={styles.pieChart}>
       <Chart 
         type="pie"
