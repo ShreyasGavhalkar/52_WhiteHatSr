@@ -74,7 +74,7 @@ const firebaseConfig = {
         // Error; SMS not sent
         // ...
         alert(error.message);
-      });
+      }); 
   };
 
   const otpSubmit = (e) => {
@@ -107,7 +107,16 @@ const firebaseConfig = {
         console.log(error);
       });
   };
-
+  async function userElections(phone_number) {
+    return fetch('http://localhost:8080/user/get_constituency', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(phone_number)
+    })
+      .then(data => data.json()) 
+   }
   return (
     <Router>
       <div id="recaptcha-container"></div>

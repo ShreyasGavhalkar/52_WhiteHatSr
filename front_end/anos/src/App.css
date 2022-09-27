@@ -1,6 +1,18 @@
+@font-face {
+  font-family: Satoshi;
+  src: url(./Assets/Satoshi-Medium.otf);
+}
+:root
+{
+  font-family: Satoshi;
+  font-size: 2rem;
+  background-color: #000000;
+  color: #d6fe51;
 
+}
 .wrapper {
   padding: 20px;
+  text-align: center;
 }
 
 .polt{
@@ -8,12 +20,12 @@
   width: 100px;
   text-align: center;
   margin: 20px;
-  color: white;
-  background-color: orange;
+  color: black;
+  background-color: #d6fe51;
   border-radius: 20px;
   position: absolute;
   top:75%;
-  left: 40%;
+  left: 45%;
   transform: translate(-50%,-50%);
 }
 
@@ -25,11 +37,11 @@
 .crd-plt{
   display: inline-block;
   vertical-align: top;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 450px;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: rgb(61, 43, 78);
+  background-color: #000000;
   border-radius: 20px;
   position: relative;
 }
@@ -37,7 +49,8 @@
 
 
 .crd-plt img{
-  width: 100px;
+  width: 250px;
+  height: 300px;
   position: absolute;
   top:40%;
   left: 50%;
