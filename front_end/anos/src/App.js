@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h1>Application</h1>
+      <h1>Khadakwasla Elections</h1>
       <BrowserRouter>
         <Routes>
         <Route path="/" element={<WalletConnect />} />  
