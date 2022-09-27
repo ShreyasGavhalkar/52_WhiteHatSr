@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 
 const SignIn = ({ loginSubmit, otpSubmit, viewOtpForm }) => {
+
   return (
     <div className="wrapper">
       <h1 className="main-heading">Sign in</h1>

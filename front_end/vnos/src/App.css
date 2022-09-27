@@ -9,6 +9,11 @@ body {
   background: #eee;
 }
 
+.prompt{
+  text-align: center;
+  font-size: 1.2rem
+}
+
 .wrapper {
   max-width: 580px;
   width: 100%;

@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //components
 import SignIn from "./components/SignIn";
 import Home from "./components/Home";
+import Results from "./components/Results";
 
 const App = () => {
   const [viewOtpForm, setViewOtpForm] = useState(false);
@@ -99,7 +100,7 @@ const firebaseConfig = {
       .auth()
       .signOut()
       .then(() => {
-        window.open("/signin", "_self");
+        window.open("/", "_self");
       })
       .catch((error) => {
         // An error happened.
@@ -112,7 +113,10 @@ const firebaseConfig = {
       <div id="recaptcha-container"></div>
       <Switch>
         <Route path="/dashboard" exact>
-          <Home signOut={signOut} user={user} />
+          <Home signOut={signOut} users={user} />
+        </Route>
+        <Route path="/results" exact>
+          <Results/>
         </Route>
         <Route path="/" exact>
           <SignIn
