@@ -1,0 +1,68 @@
+.wrapper {
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  margin-bottom: 2rem;
+}
+
+.polt {
+  outline: 0;
+  width: 80px;
+  text-align: center;
+  margin: 20px;
+  color: #fff;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  border-radius: 20px;
+  position: absolute;
+  top: 75%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  padding: 0.2rem;
+}
+
+.polt:hover {
+  background-color: rgb(158, 109, 18);
+  cursor: pointer;
+}
+
+.crdPlt {
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+  height: 450px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.crdPlt img {
+  width: 250px;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
+.mainButton {
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  color: #fff;
+  width: 14%;
+  font-size: 0.6rem;
+  /* display: block; */
+  /* margin-left: 3rem; */
+  padding: 0.6rem;
+  font-weight: 600;
+  font-family: inherit;
+  margin-top: 0.75rem;
+  outline: none;
+  border: none;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.prompt {
+  text-align: center;
+  margin-bottom: 2rem;
+}
