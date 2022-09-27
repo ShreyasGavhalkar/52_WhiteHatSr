@@ -5,7 +5,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 // react router
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //components
 import SignIn from "./components/SignIn";
@@ -120,21 +120,15 @@ const firebaseConfig = {
   return (
     <Router>
       <div id="recaptcha-container"></div>
-      <Switch>
-        <Route path="/dashboard" exact>
-          <Home signOut={signOut} users={user} />
-        </Route>
-        <Route path="/results" exact>
-          <Results/>
-        </Route>
-        <Route path="/" exact>
-          <SignIn
+      <Routes>
+        <Route exact path="/" element={<SignIn
             loginSubmit={loginSubmit}
             otpSubmit={otpSubmit}
             viewOtpForm={viewOtpForm}
-          />
-        </Route>
-      </Switch>
+          />} />
+        <Route path="/dashboard" exact element={<Home signOut={signOut} users={user} />} />
+        <Route path="/results" exact element={<Results />}/>
+      </Routes>
     </Router>
   );
 };

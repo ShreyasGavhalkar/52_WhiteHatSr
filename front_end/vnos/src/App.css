@@ -1,7 +1,4 @@
-@font-face {
-  font-family: Satoshi;
-  src: url(./Assets/Satoshi-Medium.otf);
-}
+
 :root {
   font-family: Satoshi;
   font-size: 2rem;

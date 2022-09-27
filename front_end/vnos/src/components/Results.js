@@ -1,27 +1,16 @@
 import ABI from "../ERC20ABI.json";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { ethers } from "ethers";
 import { VictoryPie } from "victory";
 import styles from "./Results.module.css";
+import  Chart  from "react-apexcharts";
 const Results = () => {
+  const [showRes, setShowingRes] = useState(false);
   const [votes, setVotes] = useState([
-    {
-      x: "Amit Shah",
-      y: "3",
-    },
-    {
-      x: "Rahul Gandhi",
-      y: "15",
-    },
-    {
-      x: "Smriti Irani",
-      y: "16",
-    },
-    {
-      x: "Modi",
-      y: "22",
-    },
+    0,0,0,0
   ]);
+
+  const candidates = ["Amit Shah", "Smriti Irani","Rahul Gandhi","Narendra Modi"];
   const addresses = [
     "0xD0E188F13783c700433Bda81820FaBf8137b681E",
     "0x8325c3d900571ec9dF176d6bFBa1E04f0a1FE352",
@@ -43,21 +32,38 @@ const Results = () => {
   };
 
   const doAll = async () => {
+    const tempvts = [...votes];
     for (let i = 0; i < addresses.length; i++) {
       const temp = await getBal(addresses[i]);
-      const tempvts = [...votes];
-      tempvts[i].y = temp;
-      setVotes(tempvts);
+      tempvts[i] = parseInt(temp);
     }
+    setVotes(tempvts);
+    
   };
 
+  useEffect(()=> {
+    setShowingRes(true);
+  },[votes])
+
   return (
-    <div onClick={doAll}>
-      {console.log(votes)}
-      Hello
-      <div className={styles.pieChart}>
-        <VictoryPie data={votes} />
-      </div>
+    <div >
+      <buton style={{textAlign:"center"}} onClick={doAll}>Show Live Comparison</buton>
+      {showRes && <div className={styles.pieChart}>
+      <Chart 
+        type="pie"
+        width={1349}
+        height={550}
+
+        series={ votes }                
+
+        options={{
+                title:{ text:"Voting Results"
+                } , 
+                noData:{text:"Empty Data"},                        
+                labels:candidates                     
+            }}
+                />
+      </div>}
     </div>
   );
 };
